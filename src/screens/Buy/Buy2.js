@@ -103,7 +103,7 @@ const Buy2 = ({navigation}) => {
     setText(option);
   };
   const getProcents = () => {
-    const arg0 = CryptoBuying / text?.rates[0].rate;
+    const arg0 = CryptoBuying / text?.rates.length -1;
     const arg1 = (arg0 * text?.finance.commission) / 100;
     const arg2 = arg0 - arg1;
     const arg3 = (arg2 * text?.finance.gateway_fees) / 100;
