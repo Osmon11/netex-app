@@ -100,7 +100,7 @@ const Sell2 = ({navigation}) => {
                   fontSize: 12,
                   color: 'rgb(10, 209, 105)',
                 }}>
-                {item.finance.sell_fees}%
+                {item.finance.balance}
               </Text>
             </View>
           )}
