@@ -88,7 +88,7 @@ const Buy2 = ({navigation}) => {
       </View>
       <View style={{alignSelf: 'center'}}>
         <Text style={{color: 'white', fontSize: 16}}>
-          {Boolean(text) && `$${text.rates[0]?. length-1}`}
+          {Boolean(text) && `$${text.rates[rates.length-1].rate}`}
         </Text>
       </View>
     </View>
@@ -103,7 +103,7 @@ const Buy2 = ({navigation}) => {
     setText(option);
   };
   const getProcents = () => {
-    const arg0 = CryptoBuying / text?.rates.length -1;
+    const arg0 = CryptoBuying / text?.rates[rates.length-1].rate;
     const arg1 = (arg0 * text?.finance.commission) / 100;
     const arg2 = arg0 - arg1;
     const arg3 = (arg2 * text?.finance.gateway_fees) / 100;
