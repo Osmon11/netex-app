@@ -146,7 +146,7 @@ const Cryptoval = props => {
                     color: 'white',
                     marginTop: 20,
                   }}>
-                  {`$${currentRate.rates.lenght-1}`}
+                  {`$${currentRate.rates.length-1}`}
                 </Text>
               </View>
             </View>
