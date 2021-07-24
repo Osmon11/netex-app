@@ -87,7 +87,7 @@ const WithDraw3 = ({navigation}) => {
           alignSelf: 'center',
         }}>
         <Text style={{color: 'white', fontSize: 16}}>
-          {Boolean(text) && `$${text?.rates.length-1}`}
+          {Boolean(text) && `$${text?.rates[rates.length - 1].rate}`}
         </Text>
       </View>
     </View>
