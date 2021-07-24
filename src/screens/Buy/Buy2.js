@@ -88,7 +88,7 @@ const Buy2 = ({navigation}) => {
       </View>
       <View style={{alignSelf: 'center'}}>
         <Text style={{color: 'white', fontSize: 16}}>
-          {Boolean(text) && `$${text.rates[0]?.rate}`}
+          {Boolean(text) && `$${text.rates[0]?. length-1}`}
         </Text>
       </View>
     </View>
