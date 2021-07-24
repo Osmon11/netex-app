@@ -93,7 +93,7 @@ const Sell = ({navigation}) => {
           style={{
             color: 'white',
             fontSize: 16,
-          }}>{`$${text?.rates[0].rate}`}</Text>
+          }}>{`$${text?.rates.length - 1}`}</Text>
       </View>
     </View>
   );
@@ -109,7 +109,7 @@ const Sell = ({navigation}) => {
     setText(option);
   };
   const getProcents = () => {
-    const arg0 = CryptoSelling * text?.rates[0].rate;
+    const arg0 = CryptoSelling * text?.rates.length;
     const arg1 = (arg0 * text?.finance.sell_fees) / 100;
     const arg2 = arg0 - arg1;
     return arg2;
