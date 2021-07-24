@@ -30,7 +30,7 @@ const ReplenishComponent = props => {
         <TouchableOpacity
           style={{
             marginTop: 30,
-            marginLeft: 10,
+            marginLeft: 20,
           }}
           onPress={() => back.goBack()}>
           <ArrowLeft />
@@ -41,7 +41,7 @@ const ReplenishComponent = props => {
               color: 'white',
               fontWeight: '700',
               marginTop: 46,
-              marginLeft: 10,
+              marginLeft: 20,
               marginBottom: 30,
               fontSize: 18,
             }}>
