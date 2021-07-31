@@ -6,12 +6,12 @@ import {WithdrawDef} from '../../store/action';
 import images from '../Balance/AddWalletComponents/AllImages';
 
 const WithDraw2 = ({navigation}) => {
-  const {sellRates} = useSelector(store => store.appReducer);
+  const {withdrawRates} = useSelector(store => store.appReducer);
   const [DATA, setDATA] = useState([]);
 
   useEffect(() => {
-    setDATA(sellRates.filter(item => item.finance.cashout_status === '1'));
-  }, [sellRates]);
+    setDATA(withdrawRates.filter(item => item.finance.cashout_status === '1'));
+  }, [withdrawRates]);
 
   const dispatch = useDispatch();
   return (

@@ -22,6 +22,7 @@ export const GET_OPERATIONS_FILTERED = 'GET_OPERATIONS_FILTERED';
 export const CHECKS_DATA = 'CHECKS_DATA';
 export const FAQ_DATA = 'FAQ_DATA';
 export const SELL_RATES = 'SELL_RATES';
+export const WITHDRAW_RATES = 'WITHDRAW_RATES';
 export const GET_FAQ = 'GET_FAQ';
 export const CONFIRM_BUY_DATA = 'CONFIRM_BUY_DATA';
 export const CONFIRM_SELL_DATA = 'CONFIRM_SELL_DATA';
@@ -122,6 +123,13 @@ export function FaqData(data) {
 export function SellRates(data) {
   return {
     type: SELL_RATES,
+    payload: data,
+  };
+}
+// ----------------------------
+export function WithdrawRates(data) {
+  return {
+    type: WITHDRAW_RATES,
     payload: data,
   };
 }

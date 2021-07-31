@@ -21,6 +21,7 @@ import {
   RUB,
   SOM,
   KZT,
+  T,
 } from '../../Svg';
 export default {
   BTC: {image: <Btc />},
@@ -39,6 +40,7 @@ export default {
   DOGE: {image: <Doge />},
   USD: {image: <$Icon />},
   RUR: {image: <RUB />},
+  USDT: {image: <T />},
   USDTSUM: {image: <SUM />},
   USDTUSD: {image: <USD />},
   USDTRUB: {image: <RUB />},

@@ -27,6 +27,7 @@ import {
   CONFIRM_SELL_DATA,
   CONFIRM_WITHDRAW_DATA,
   FIAT_KURSES,
+  WITHDRAW_RATES,
 } from './action';
 
 const initialState = {
@@ -57,6 +58,7 @@ const initialState = {
   confirmWithdraw: '',
   sellDef: '',
   withdrawDef: '',
+  withdrawRates: '',
   replenishData: '',
   addwalletRead: true,
   replenishComponentData: '',
@@ -86,6 +88,13 @@ export default function appReducer(state = initialState, action) {
       return {
         ...state,
         withdrawDef: payload,
+      };
+    }
+    // ------------------
+    case WITHDRAW_RATES: {
+      return {
+        ...state,
+        withdrawRates: payload,
       };
     }
     // ------------------

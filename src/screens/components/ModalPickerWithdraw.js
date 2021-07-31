@@ -13,15 +13,15 @@ import {appAxios} from '../../api/axios';
 import images from '../Balance/AddWalletComponents/AllImages';
 
 const ModalPickerWithdraw = props => {
-  const {sellRates} = useSelector(store => store.appReducer);
+  const {withdrawRates} = useSelector(store => store.appReducer);
 
   const onPressItem = option => {
     props.changeModalVisiblity(false);
     props.setData(option);
   };
   const option =
-    Boolean(sellRates) &&
-    sellRates
+    Boolean(withdrawRates) &&
+    withdrawRates
       .filter(item => item.finance.cashout_status === '1')
       .map((item, key) => {
         return (

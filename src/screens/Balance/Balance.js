@@ -37,6 +37,7 @@ import {
   getAllWallets,
   setUserHistory,
   FiatKurs,
+  WithdrawRates,
 } from '../../store/action';
 import {appAxios} from '../../api/axios';
 import AllCryptovalComponent from '../components/AllCryptovalComponent';
@@ -114,8 +115,12 @@ const Balance = ({navigation}) => {
           for (let currency in data.data) {
             arr.push(data.data[currency]);
           }
-          arr
-            .filter(item => item.status === '1')
+          let filteredArr = arr
+            .filter(item => {
+              return (
+                item.finance.status === '1' && item.finance.currency !== 'USDT'
+              );
+            })
             .map(item => {
               let data = {
                 rates: [],
@@ -130,7 +135,7 @@ const Balance = ({navigation}) => {
               return item;
             });
 
-          dispatch(SellRates(arr));
+          dispatch(SellRates(filteredArr));
         })
         .catch(e => console.log(e.message));
     }
@@ -161,10 +166,13 @@ const Balance = ({navigation}) => {
       appAxios
         .get('rates')
         .then(({data}) => {
-          let arr = [];
+          let withdrawArr = [];
           for (let currency in data.data) {
-            arr.push(data.data[currency]);
+            withdrawArr.push(data.data[currency]);
           }
+          let arr = withdrawArr.filter(
+            currency => currency.finance.currency !== 'USDT',
+          );
           arr.map(item => {
             let data = {
               rates: [],
@@ -183,6 +191,7 @@ const Balance = ({navigation}) => {
           let rates = arr.splice(0, 10);
           dispatch(saveRates(rates));
           dispatch(saveAllRates(arr.concat(rates)));
+          dispatch(WithdrawRates(withdrawArr));
           // dispatch(saveRates(newRates));
           // dispatch(saveAllRates(arr.concat(newRates)));
         })

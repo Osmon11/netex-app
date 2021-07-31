@@ -87,7 +87,12 @@ const WithDraw3 = ({navigation}) => {
           alignSelf: 'center',
         }}>
         <Text style={{color: 'white', fontSize: 16}}>
-          {Boolean(text) && `$${text?.rates[rates.length - 1].rate}`}
+          {Boolean(text) &&
+            `$${
+              text.finance.currency === 'USDT'
+                ? 1
+                : text.rates[text.rates.length - 1].rate
+            }`}
         </Text>
       </View>
     </View>
@@ -98,6 +103,8 @@ const WithDraw3 = ({navigation}) => {
     setModalVisible2(bool);
   };
   const setData = option => {
+    console.log(option);
+
     setText(option);
   };
   const getProcents = () => {
