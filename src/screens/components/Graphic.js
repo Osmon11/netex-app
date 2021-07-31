@@ -36,11 +36,6 @@ const weekDays2 = {
   Sun: 'Вск',
 };
 
-function convertToDateObj(time) {
-  let date = new Date(new Date().getTime() - time).toUTCString().split(' ');
-  return `${weekDays[date[0].substr(0, 3)]} ${date[4].substr(0, 5)}`;
-}
-
 const Graphic = () => {
   const [active, setActive] = useState('7д');
   const {currentRate} = useSelector(store => store.appReducer);

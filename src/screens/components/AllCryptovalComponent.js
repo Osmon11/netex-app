@@ -185,7 +185,7 @@ const AllCryptovalComponent = navigation => {
                     color: '#fff',
                     width: '100%',
                   }}>
-                  {`$${item.rates[0].rate}`}
+                  {`$${item.rates[item.rates.length - 1].rate}`}
                 </Text>
               </View>
             </View>
