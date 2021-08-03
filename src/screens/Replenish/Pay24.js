@@ -69,16 +69,16 @@ const Pay24 = ({navigation}) => {
         paddingHorizontal: 20,
         backgroundColor: 'rgba(32,34,42,1)',
       }}>
-      <View
-        style={{
-          marginTop: 30,
-          marginBottom: 52,
-        }}>
-        <TouchableOpacity onPress={() => back.goBack()}>
-          <ArrowLeft />
-        </TouchableOpacity>
-      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            marginTop: 30,
+            marginBottom: 52,
+          }}>
+          <TouchableOpacity onPress={() => back.goBack()}>
+            <ArrowLeft />
+          </TouchableOpacity>
+        </View>
         <Text
           style={{
             fontSize: 18,

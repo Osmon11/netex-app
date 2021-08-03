@@ -8,6 +8,7 @@ import {
   Dimensions,
   ActivityIndicator,
   RefreshControl,
+  PermissionsAndroid,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {useIsFocused, useNavigation} from '@react-navigation/native';
@@ -32,7 +33,6 @@ import {
   getWallets,
   saveRates,
   saveAllRates,
-  UserHistory,
   SellRates,
   getAllWallets,
   setUserHistory,
@@ -51,6 +51,12 @@ import WithDraw2 from '../burgerScreen/WithDraw2';
 import WithDraw3 from '../burgerScreen/WithDraw3';
 import WithDraw from '../burgerScreen/WithDraw';
 
+// запрашиваем разрешение на запись внешнему хранилищу
+const checkAndroidPermission = async () => {
+  const permission = PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE;
+  await PermissionsAndroid.request(permission);
+};
+
 const Balance = ({navigation}) => {
   const width = Dimensions.get('window').width;
   const [refreshing, setRefreshing] = useState(false);
@@ -62,21 +68,22 @@ const Balance = ({navigation}) => {
   );
   useEffect(() => {
     getBalance();
-  }, [focused]),
-    // ----------------------------------------------------------
-    useEffect(() => {
-      getData();
-      return () => {
-        dispatch(getWallets(''));
-        dispatch(getAllWallets(''));
-        dispatch(SellRates(''));
-        dispatch(saveUserData(''));
-        dispatch(saveRates(''));
-        dispatch(saveAllRates(''));
-        dispatch(FiatKurs(''));
-        dispatch(setUserHistory(''));
-      };
-    }, []);
+  }, [focused]);
+  // ----------------------------------------------------------
+  useEffect(() => {
+    getData();
+    checkAndroidPermission();
+    return () => {
+      dispatch(getWallets(''));
+      dispatch(getAllWallets(''));
+      dispatch(SellRates(''));
+      dispatch(saveUserData(''));
+      dispatch(saveRates(''));
+      dispatch(saveAllRates(''));
+      dispatch(FiatKurs(''));
+      dispatch(setUserHistory(''));
+    };
+  }, []);
   // ----------------------------------------------------------
   const getBalance = async () => {
     const tokenLocal = await AsyncStorage.getItem('Token');
@@ -110,17 +117,17 @@ const Balance = ({navigation}) => {
             authorization: tokenLocal || token,
           },
         })
-        .then(({data}) => {
-          let arr = [];
-          for (let currency in data.data) {
-            arr.push(data.data[currency]);
+        .then(({data: resData}) => {
+          let withdrawArr = [];
+          for (let currency in resData.data) {
+            withdrawArr.push(resData.data[currency]);
           }
-          let filteredArr = arr
-            .filter(item => {
-              return (
-                item.finance.status === '1' && item.finance.currency !== 'USDT'
-              );
-            })
+          let arr = withdrawArr
+            .filter(
+              currency =>
+                currency.finance.status === '1' &&
+                currency.finance.currency !== 'USDT',
+            )
             .map(item => {
               let data = {
                 rates: [],
@@ -134,8 +141,8 @@ const Balance = ({navigation}) => {
               item.data = data;
               return item;
             });
-
-          dispatch(SellRates(filteredArr));
+          dispatch(WithdrawRates(withdrawArr));
+          dispatch(SellRates(arr));
         })
         .catch(e => console.log(e.message));
     }
@@ -162,17 +169,16 @@ const Balance = ({navigation}) => {
         .catch(e => console.log(e.message));
     }
     // -------------------------------------------
-    if (!Boolean(allRates) && tokenLocal) {
+    if (!allRates && tokenLocal) {
       appAxios
         .get('rates')
-        .then(({data}) => {
-          let withdrawArr = [];
-          for (let currency in data.data) {
-            withdrawArr.push(data.data[currency]);
+        .then(({data: resData}) => {
+          let arr = [];
+          for (let currency in resData.data) {
+            if (resData.data[currency].finance.currency !== 'USDT') {
+              arr.push(resData.data[currency]);
+            }
           }
-          let arr = withdrawArr.filter(
-            currency => currency.finance.currency !== 'USDT',
-          );
           arr.map(item => {
             let data = {
               rates: [],
@@ -187,13 +193,9 @@ const Balance = ({navigation}) => {
             item.data = data;
             return item;
           });
-
           let rates = arr.splice(0, 10);
           dispatch(saveRates(rates));
           dispatch(saveAllRates(arr.concat(rates)));
-          dispatch(WithdrawRates(withdrawArr));
-          // dispatch(saveRates(newRates));
-          // dispatch(saveAllRates(arr.concat(newRates)));
         })
         .catch(e => console.log(e.message));
     }

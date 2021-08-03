@@ -100,6 +100,7 @@ const Buy2 = ({navigation}) => {
     setModalVisible2(bool);
   };
   const setData = option => {
+    console.log(option);
     setText(option);
   };
   const getProcents = () => {

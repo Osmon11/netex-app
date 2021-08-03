@@ -20,7 +20,7 @@ const WithDraw = nav => {
     return (
       <SafeAreaView
         style={{
-          paddingHorizontal: 28,
+          flex: 1,
           backgroundColor: 'rgba(32,34,42,1)',
         }}>
         <StatusBar
