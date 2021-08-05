@@ -22,7 +22,6 @@ import {
   VerifyWaitIcon,
   VerifyRedIcon,
 } from '../Svg';
-import {convertToDateObj} from '../burgerScreen/HistoryPage';
 import AllHistory from './AllHistory';
 import ChangeName from './ChangeName';
 import ChangePass from './ChangePass';
@@ -268,47 +267,49 @@ const Profile = nav => {
                 </Text>
                 {verifyIcon}
               </View>
-              <TouchableOpacity
-                style={{
-                  display:
-                    userData.u_verify === '1'
-                      ? 'flex'
-                      : userData.u_verify === '4'
-                      ? 'flex'
-                      : 'none',
-                }}
-                onPress={() => {
-                  navigation.navigate('VerifyProfile');
-                }}>
-                <LinearGradient
-                  start={{x: 2, y: 6.5}}
-                  end={{x: 3, y: 0}}
-                  colors={[
-                    'rgba(11,208,97,1)',
-                    'rgba(5,210,135,1)',
-                    'rgba(0,57,230,1)',
-                  ]}
+              {userData.u_verify !== '2' && (
+                <TouchableOpacity
                   style={{
-                    alignSelf: 'center',
-                    paddingVertical: 5,
-                    paddingHorizontal: 25,
-                    height: 49,
-                    marginTop: 24,
-                    backgroundColor: 'rgba(0,57,230,1)',
-                    borderRadius: 10,
-                    justifyContent: 'center',
+                    display:
+                      userData.u_verify === '1'
+                        ? 'flex'
+                        : userData.u_verify === '4'
+                        ? 'flex'
+                        : 'none',
+                  }}
+                  onPress={() => {
+                    navigation.navigate('VerifyProfile');
                   }}>
-                  <Text
+                  <LinearGradient
+                    start={{x: 2, y: 6.5}}
+                    end={{x: 3, y: 0}}
+                    colors={[
+                      'rgba(11,208,97,1)',
+                      'rgba(5,210,135,1)',
+                      'rgba(0,57,230,1)',
+                    ]}
                     style={{
-                      fontWeight: '600',
-                      fontSize: 16,
                       alignSelf: 'center',
-                      color: 'white',
+                      paddingVertical: 5,
+                      paddingHorizontal: 25,
+                      height: 49,
+                      marginTop: 24,
+                      backgroundColor: 'rgba(0,57,230,1)',
+                      borderRadius: 10,
+                      justifyContent: 'center',
                     }}>
-                    ВЕРИФИЦИРОВАТЬ
-                  </Text>
-                </LinearGradient>
-              </TouchableOpacity>
+                    <Text
+                      style={{
+                        fontWeight: '600',
+                        fontSize: 16,
+                        alignSelf: 'center',
+                        color: 'white',
+                      }}>
+                      ВЕРИФИЦИРОВАТЬ
+                    </Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              )}
             </View>
             <Text style={{marginTop: 30, color: 'white', fontWeight: '500'}}>
               ИСТОРИЯ АККАУНТА

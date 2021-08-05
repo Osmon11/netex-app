@@ -62,7 +62,7 @@ import {loader} from '../screens/components/FullLoader';
 import ConfirmBuy from '../screens/Buy/ConfirmBuy';
 import ConfirmSell from '../screens/Buy/ConfirmSell';
 import ConfirmWithdraw from '../screens/Buy/ConfirmWithdraw';
-export default DrawerNavigation = nav => {
+const DrawerNavigation = nav => {
   const Drawer = createDrawerNavigator();
   // -------------------------------------------------
   // |                 Start Drawer                  |
@@ -408,6 +408,8 @@ export default DrawerNavigation = nav => {
     </>
   );
 };
+
+export default DrawerNavigation;
 
 const styles = StyleSheet.create({
   verify: {

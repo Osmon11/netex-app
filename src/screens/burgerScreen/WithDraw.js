@@ -13,6 +13,7 @@ import {ArrowLeft} from '../Svg';
 import {createStackNavigator} from '@react-navigation/stack';
 import WithDraw2 from './WithDraw2';
 import WithDraw3 from './WithDraw3';
+
 const WithDraw = nav => {
   // ---------------------------Home start----------------------------------------
   function Home({navigation}) {
@@ -21,6 +22,7 @@ const WithDraw = nav => {
       <SafeAreaView
         style={{
           flex: 1,
+          paddingHorizontal: 28,
           backgroundColor: 'rgba(32,34,42,1)',
         }}>
         <StatusBar
@@ -41,7 +43,6 @@ const WithDraw = nav => {
               alignItems: 'center',
               justifyContent: 'center',
               alignSelf: 'center',
-              marginLeft: -15,
             }}
             onPress={() => navigation.goBack()}>
             <ArrowLeft />

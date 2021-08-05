@@ -8,23 +8,13 @@ import {
   Alert,
   SafeAreaView,
 } from 'react-native';
-import {StackActions, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 import AddWalletThird from '../Balance/AddWalletThird';
 import Buy2 from './Buy2';
-import {
-  Burger,
-  VerifyIcon,
-  NotVerifyIcon,
-  MinSummIcon,
-  ProcentIcon,
-} from '../Svg';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import LinearGradient from 'react-native-linear-gradient';
-import config from '../../api/config';
+import {Burger} from '../Svg';
 import {createStackNavigator} from '@react-navigation/stack';
 import ConfirmBuy from '../Buy/ConfirmBuy';
-import History from '../burgerScreen/HistoryPage';
 import BuyCheck from '../burgerScreen/Cheks/BuyCheck';
 import ConclusionCheck from '../burgerScreen/Cheks/ConclusionCheck';
 import ReplenishCheck from '../burgerScreen/Cheks/ReplenishCheck';
@@ -33,10 +23,6 @@ import SellCheck from '../burgerScreen/Cheks/SellCheck';
 const Buy = nav => {
   // -------------------------------------------------------------------
   const drawer = useNavigation();
-
-  // -------------------------------------------------------------------
-
-  // -----------------------------------------------------------------------------
 
   // ---------------------------Home start----------------------------------------
   function Home({navigation}) {

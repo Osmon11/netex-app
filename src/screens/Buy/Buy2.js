@@ -196,7 +196,7 @@ const Buy2 = ({navigation}) => {
             style={{
               color: 'white',
               fontSize: 22,
-              marginLeft: 20,
+              marginLeft: 10,
               alignSelf: 'center',
             }}>
             Купить

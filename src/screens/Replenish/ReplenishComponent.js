@@ -75,6 +75,7 @@ const ReplenishComponent = props => {
           <Text
             style={{
               marginTop: 20,
+              marginBottom: 100,
               color: 'white',
               marginLeft: 22,
               fontSize: 16,
