@@ -90,7 +90,7 @@ const WithDraw3 = ({navigation}) => {
           {Boolean(text) &&
             `$${
               text.finance.currency === 'USDT'
-                ? 1
+                ? '1.00'
                 : text.rates[text.rates.length - 1].rate
             }`}
         </Text>

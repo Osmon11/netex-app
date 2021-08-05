@@ -28,7 +28,6 @@ const WithDraw2 = ({navigation}) => {
               style={{
                 width: '33.33%',
                 alignItems: 'center',
-                marginTop: 10,
                 marginBottom: DATA.length === index + 1 ? 150 : 0,
               }}>
               <TouchableOpacity

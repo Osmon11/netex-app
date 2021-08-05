@@ -69,20 +69,20 @@ const Profile = nav => {
 
     function Content() {
       const verifyText =
-        userData.u_verify === '1'
+        parseInt(userData.u_verify) === 1
           ? 'Не верифицирован'
-          : userData.u_verify === '2'
+          : parseInt(userData.u_verify) === 2
           ? 'Верифицирован'
-          : userData.u_verify === '3'
+          : parseInt(userData.u_verify) === 3
           ? 'На рассмотрении'
           : 'Отклонено';
 
       const verifyIcon =
-        userData.u_verify === '1' ? (
+        parseInt(userData.u_verify) === 1 ? (
           <VerifyRedIcon />
-        ) : userData.u_verify === '2' ? (
+        ) : parseInt(userData.u_verify) === 2 ? (
           <VerifyGreenIcon />
-        ) : userData.u_verify === '3' ? (
+        ) : parseInt(userData.u_verify) === 3 ? (
           <VerifyWaitIcon />
         ) : (
           <NotVerifyIcon />
@@ -267,13 +267,14 @@ const Profile = nav => {
                 </Text>
                 {verifyIcon}
               </View>
-              {userData.u_verify !== '2' && (
+              {parseInt(userData.u_verify) !== 2 ||
+              parseInt(userData.u_verify) !== 4 ? (
                 <TouchableOpacity
                   style={{
                     display:
-                      userData.u_verify === '1'
+                      parseInt(userData.u_verify) === 1
                         ? 'flex'
-                        : userData.u_verify === '4'
+                        : parseInt(userData.u_verify) === 4
                         ? 'flex'
                         : 'none',
                   }}
@@ -309,7 +310,7 @@ const Profile = nav => {
                     </Text>
                   </LinearGradient>
                 </TouchableOpacity>
-              )}
+              ) : null}
             </View>
             <Text style={{marginTop: 30, color: 'white', fontWeight: '500'}}>
               ИСТОРИЯ АККАУНТА

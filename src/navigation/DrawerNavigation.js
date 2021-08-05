@@ -194,11 +194,11 @@ const DrawerNavigation = nav => {
                     : `${userData.firstname} ${userData.lastname}`}
                 </Text>
                 <Text style={styles.verify}>
-                  {userData.u_verify === '1'
+                  {parseInt(userData.u_verify) === 1
                     ? 'Не верифицирован'
-                    : userData.u_verify === '2'
+                    : parseInt(userData.u_verify) === 2
                     ? 'Верифицирован'
-                    : userData.u_verify === '3'
+                    : parseInt(userData.u_verify) === 3
                     ? 'На рассмотрении'
                     : 'Отклонено'}
                 </Text>

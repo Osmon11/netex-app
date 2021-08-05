@@ -22,7 +22,7 @@ const WithDraw = nav => {
       <SafeAreaView
         style={{
           flex: 1,
-          paddingHorizontal: 28,
+          paddingHorizontal: 20,
           backgroundColor: 'rgba(32,34,42,1)',
         }}>
         <StatusBar
@@ -35,6 +35,8 @@ const WithDraw = nav => {
             marginBottom: 23,
             display: 'flex',
             flexDirection: 'row',
+            marginLeft: -10,
+            // justifyContent: 'space-between',
           }}>
           <TouchableOpacity
             style={{
