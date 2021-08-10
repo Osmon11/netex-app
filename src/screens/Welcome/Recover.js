@@ -118,7 +118,7 @@ const Recover = props => {
                   alignSelf: 'center',
                   color: 'white',
                 }}>
-                ВОССТАНОВИТТЬ
+                ВОССТАНОВИТЬ
               </Text>
             </LinearGradient>
           </TouchableOpacity>

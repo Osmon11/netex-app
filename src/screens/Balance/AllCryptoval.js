@@ -17,7 +17,6 @@ const AllCryptoval = ({navigation}) => {
   const back = useNavigation();
   const {fiatKurse} = useSelector(store => store.appReducer);
   // -------------------------------------------------------------------------
-
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -55,14 +54,15 @@ const AllCryptoval = ({navigation}) => {
                   <Image
                     style={{
                       alignSelf: 'center',
-                      width: 65,
-                      height: 65,
+                      width: 16,
+                      height: 16,
                       borderRadius: 2,
                     }}
                     source={{
                       uri:
-                        'https://netex.kg/assets/images/ps/fiat' +
-                        fiatKurse.logo,
+                        'https://netex.kg/assets/images/ps/fiat/' +
+                        item.currency +
+                        '.png',
                     }}
                   />
                 </View>
@@ -72,7 +72,7 @@ const AllCryptoval = ({navigation}) => {
                     alignSelf: 'center',
                     fontSize: 16,
                   }}>
-                  {item.currency}
+                  {item.currency.replace('USDT', '')}
                 </Text>
 
                 <Text
