@@ -499,7 +499,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netex.netexApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odigital.netex;
 				PRODUCT_NAME = Netex;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -525,7 +525,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.netex.netexApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.odigital.netex;
 				PRODUCT_NAME = Netex;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
