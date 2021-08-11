@@ -8,6 +8,6 @@ export const ToastShow = (text, time, type, position) => {
     position: position || 'bottom',
     visibilityTime: time || 0.5,
     // topOffset: mtop ||null,
-    // bottomOffset: mtop || null,
+    bottomOffset: 20,
   });
 };
