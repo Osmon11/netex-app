@@ -1,5 +1,4 @@
 import React from 'react';
-import {Platform} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Balance from '../screens/Balance/Balance';
@@ -19,10 +18,10 @@ const BottomBarNavigation = () => (
       labelPosition: 'below-icon',
       // tabStyle: {justifyContent: 'center', alignContent: 'center'},
       style: {
-        height: Platform.OS === 'android' ? 70 : 100,
+        height: 80,
         backgroundColor: '#2E313F',
-        paddingVertical: 10,
-
+        paddingBottom: 10,
+        paddingTop: 10,
         borderTopColor: 'rgba(0,0,0,0.3)',
       },
       labelStyle: {marginBottom: 17, marginTop: -3},
