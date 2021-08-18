@@ -99,7 +99,7 @@ const Graphic = () => {
             chartConfig={{
               backgroundGradientFrom: 'rgba(0,0,0,0.0)',
               backgroundGradientTo: 'rgba(0,0,0,0.0)',
-              decimalPlaces: 2,
+              decimalPlaces: 1,
               backgroundGradientFromOpacity: 0,
               backgroundGradientToOpacity: 0,
 

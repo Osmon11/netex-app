@@ -143,9 +143,10 @@ const s = StyleSheet.create({
   InputStyle: {
     backgroundColor: 'rgb(39, 45, 63)',
     borderRadius: 20,
-    marginTop: 25,
+    marginTop: 33,
     color: 'white',
     paddingLeft: 20,
     paddingVertical: 10,
+    height: 45,
   },
 });
