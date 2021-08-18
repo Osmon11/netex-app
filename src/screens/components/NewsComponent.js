@@ -52,7 +52,9 @@ const NewsComponent = props => {
           </TouchableOpacity>
         </Modal>
         {/* ---------------Modal end--------------- */}
-        <TouchableOpacity style={{marginTop: 30}} onPress={() => back.goBack()}>
+        <TouchableOpacity
+          style={{marginTop: 30, width: 50, height: 50}}
+          onPress={() => back.goBack()}>
           <ArrowLeft />
         </TouchableOpacity>
         <Text

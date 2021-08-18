@@ -34,6 +34,8 @@ const About = ({navigation}) => {
             marginTop: 30,
             marginLeft: 25,
             marginBottom: 25,
+            width: 50,
+            height: 50,
           }}
           onPress={() => back.goBack()}>
           <ArrowLeft />

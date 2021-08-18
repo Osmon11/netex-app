@@ -175,7 +175,6 @@ const VerifyProfile = ({navigation}) => {
         marginTop: 90,
         margin: 20,
         borderRadius: 20,
-        borderRadius: 10,
         backgroundColor: 'rgba(0,0,0,0.9)',
       }}>
       <View style={{}}>
@@ -235,7 +234,9 @@ const VerifyProfile = ({navigation}) => {
               justifyContent: 'space-between',
               flexDirection: 'row',
             }}>
-            <TouchableOpacity onPress={() => back.goBack()}>
+            <TouchableOpacity
+              onPress={() => back.goBack()}
+              style={{width: 50, height: 50}}>
               <ArrowLeft />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setModalVisible(true)}>

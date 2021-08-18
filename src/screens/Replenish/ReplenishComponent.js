@@ -31,6 +31,8 @@ const ReplenishComponent = props => {
           style={{
             marginTop: 30,
             marginLeft: 20,
+            width: 50,
+            height: 50,
           }}
           onPress={() => back.goBack()}>
           <ArrowLeft />

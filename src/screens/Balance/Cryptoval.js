@@ -91,6 +91,8 @@ const Cryptoval = props => {
               marginTop: 30,
               marginBottom: 37,
               marginLeft: 28,
+              width: 50,
+              height: 50,
             }}
             onPress={() => back.goBack()}>
             <ArrowLeft />

@@ -38,6 +38,8 @@ const SellCheck = props => {
             style={{
               marginTop: 30,
               marginLeft: 28,
+              width: 50,
+              height: 50,
             }}
             onPress={() => props.navigation.navigate('История')}>
             <ArrowLeft />

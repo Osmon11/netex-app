@@ -80,6 +80,8 @@ const ChangePass = ({navigation}) => {
           style={{
             marginTop: 30,
             marginBottom: 46,
+            width: 50,
+            height: 50,
           }}
           onPress={() => back.goBack()}>
           <ArrowLeft />

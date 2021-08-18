@@ -1,52 +1,12 @@
 import React, {useState} from 'react';
-import {
-  Alert,
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Dimensions, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {LineChart} from 'react-native-chart-kit';
 import {useSelector} from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
-import {Rect, Text as TextSVG, Svg} from 'react-native-svg';
 import moment from 'moment';
 
-const weekDays = {
-  Mon: 'Понедельник',
-  Tue: 'Вторник',
-  Wed: 'Среда',
-  Thu: 'Четверг',
-  Fri: 'Пятница',
-  Sat: 'Суббота',
-  Sun: 'Воскресенье',
-};
-
-const weekDays2 = {
-  Mon: 'Пн',
-  Tue: 'Вт',
-  Wed: 'Ср',
-  Thu: 'Чт',
-  Fri: 'Пт',
-  Sat: 'Сб',
-  Sun: 'Вск',
-};
-
 const Graphic = () => {
-  const [active, setActive] = useState('7д');
   const {currentRate} = useSelector(store => store.appReducer);
-  // let Data = [
-  //   {id: 0, text: '1д'},
-  //   {id: 1, text: '7д'},
-  //   {id: 2, text: '1м'},
-  //   {id: 3, text: '3м'},
-  //   {id: 4, text: '1г'},
-  //   {id: 5, text: 'Всё'},
-  // ];
   let [tooltipPos, setTooltipPos] = useState({
     x: 0,
     y: 0,
@@ -55,66 +15,18 @@ const Graphic = () => {
   });
   return (
     <SafeAreaView>
-      {/* <FlatList
-        data={Data}
-        horizontal={true}
-        keyExtractor={item => `${item.id}`}
-        renderItem={({item}) => (
-          <TouchableOpacity onPress={() => setActive(item.text)}>
-            <View
-              style={{
-                width: 40,
-                height: 25,
-                borderRadius: 20,
-                backgroundColor:
-                  active === item.text
-                    ? 'rgba(185, 193, 217, 1)'
-                    : 'rgba(39,45,63,1)',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginRight: 10.5,
-                marginBottom: 20,
-              }}>
-              <Text
-                style={{
-                  fontWeight: '400',
-                  fontSize: 12,
-                  color:
-                    active === item.text
-                      ? 'rgba(39, 45, 63, 1)'
-                      : 'rgba(185,193,217,1)',
-                }}>
-                {item.text}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        )}/>*/}
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={{marginTop: 20, marginHorizontal: 10}}>
           <LineChart
-            // renderDotContent={<View style={{backgroundColor: 'red'}}></View>}
-            // // <View>
-            // {"dataset": {"data": [100, 110, 90, 130, 80, 103]}, "getColor": [Function getColor], "index": 3, "value": 130, "x": 237.7142857142857, "y": 16}
             bezier
             verticalLabelRotation={0}
             data={{
               labels: [''],
-              //  currentRate.data.date.map(
-              //   item =>
-              //     // moment.unix(item).format('H:i:s'),
-              //     weekDays2[
-              //       new Date(new Date().getTime() - item)
-              //         .toUTCString()
-              //         .split(' ')[0]
-              //         .substr(0, 3)
-              //     ],
-              // ),
+
               datasets: [
                 {
                   data: currentRate.data.rates,
-                  color: () => `#f27171`, // optional
-                  // legendFontSize: 15
+                  color: () => '#f27171',
                 },
               ],
             }}

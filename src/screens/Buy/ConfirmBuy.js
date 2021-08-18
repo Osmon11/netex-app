@@ -52,6 +52,8 @@ const ConfirmBuy = props => {
         style={{
           marginTop: 30,
           marginBottom: 52,
+          width: 50,
+          height: 50,
         }}
         onPress={() => back.goBack()}>
         <ArrowLeft />

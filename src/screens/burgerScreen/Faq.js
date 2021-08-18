@@ -15,6 +15,8 @@ const Faq = ({navigation}) => {
         <TouchableOpacity
           style={{
             marginTop: 30,
+            width: 50,
+            height: 50,
           }}
           onPress={() => navigation.goBack()}>
           <ArrowLeft />

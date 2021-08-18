@@ -65,7 +65,7 @@ const AllHistory = ({navigation}) => {
         } else {
           setisLoading(true);
 
-          setDataa(dataa.concat(data.data.user_actions));
+          setDataa([...dataa, ...data.data.user_actions]);
           setisLoading(false);
         }
       });
@@ -79,8 +79,7 @@ const AllHistory = ({navigation}) => {
           flexDirection: 'row',
           marginTop: 15,
           paddingHorizontal: 28,
-                        marginBottom: dataa.length === index + 1 ? 20 : 0,
-
+          marginBottom: dataa.length === index + 1 ? 20 : 0,
         }}>
         <Text style={[styles.AllHistoryText, {width: '30%'}]}>
           {moment.unix(item.date).format('DD.MM.YYYY HH:mm')}

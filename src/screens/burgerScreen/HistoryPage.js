@@ -197,7 +197,9 @@ const History = ({navigation}) => {
               justifyContent: 'space-between',
               flexDirection: 'row',
             }}>
-            <TouchableOpacity onPress={() => navigation.navigate('Balance')}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Balance')}
+              style={{width: 50, height: 50}}>
               <ArrowLeft />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Filter')}>

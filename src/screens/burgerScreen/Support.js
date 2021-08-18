@@ -14,6 +14,8 @@ const Support = () => {
             marginTop: 30,
             marginBottom: 28,
             marginLeft: 28,
+            width: 50,
+            height: 50,
           }}
           onPress={() => back.goBack()}>
           <ArrowLeft />

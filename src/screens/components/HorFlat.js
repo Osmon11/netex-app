@@ -29,10 +29,10 @@ import {load} from './FullLoader';
 const HorFlat = navigation => {
   const [text, setText] = useState('');
   useEffect(() => {
-    if (!Boolean(text) && Boolean(allRates)) {
+    if (!text && Boolean(allRates)) {
       setText(rates.filter(item => item.rates[0]));
     }
-  }, []);
+  }, [allRates, rates, text]);
 
   function decimalAdjust(type, value, exp) {
     // Если степень не определена, либо равна нулю...
@@ -58,7 +58,7 @@ const HorFlat = navigation => {
     store => store.appReducer,
   );
 
-  return !Boolean(wallets) ? (
+  return !wallets ? (
     <ActivityIndicator size="large" color="#FFF" />
   ) : (
     <SafeAreaView>
@@ -249,7 +249,11 @@ const HorFlat = navigation => {
 
                                         // console.log(item);
                                       }}
-                                      style={{alignSelf: 'flex-end'}}>
+                                      style={{
+                                        alignSelf: 'flex-end',
+                                        width: 20,
+                                        height: 20,
+                                      }}>
                                       <ParamsIcon />
                                     </TouchableOpacity>
                                   )}

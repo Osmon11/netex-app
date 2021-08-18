@@ -46,6 +46,8 @@ const News = ({navigation}) => {
         style={{
           marginVertical: 30,
           marginLeft: 28,
+          width: 50,
+          height: 50,
         }}
         onPress={() => navigation.goBack()}>
         <ArrowLeft />

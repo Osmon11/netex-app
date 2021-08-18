@@ -73,7 +73,9 @@ const CardPay = props => {
             marginTop: 30,
             marginBottom: 40,
           }}>
-          <TouchableOpacity onPress={() => back.goBack()}>
+          <TouchableOpacity
+            onPress={() => back.goBack()}
+            style={{width: 50, height: 50}}>
             <ArrowLeft />
           </TouchableOpacity>
         </View>

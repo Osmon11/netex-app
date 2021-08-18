@@ -57,6 +57,8 @@ const Confirm = ({navigation}) => {
         style={{
           marginTop: 30,
           marginBottom: 52,
+          width: 50,
+          height: 50,
         }}
         onPress={() => back.goBack()}>
         <ArrowLeft />
@@ -85,28 +87,26 @@ const Confirm = ({navigation}) => {
         <Text style={s.first_text}>Сумма к зачислению </Text>
         <Text style={s.second_text}>
           {confirm.data.finance_param?.credit +
-             ' ' + 
-            confirm.data.finance_param.currency} 
+            ' ' +
+            confirm.data.finance_param.currency}
         </Text>
         {/* --------------------------------------------------------------- */}
         <Text style={s.first_text}>Наша комиссия</Text>
         <Text style={s.second_text}>
           {confirm.data.finance_param?.commission +
-           ' ' +
-           confirm.data.finance_param.currency}
+            ' ' +
+            confirm.data.finance_param.currency}
         </Text>
         {/* --------------------------------------------------------------- */}
         <Text style={s.first_text}>Комиссия системы</Text>
         <Text style={s.second_text}>
-           {confirm.data.finance_param?.gateway_fees +
-            ' ' + 
-             confirm.data.finance_param.currency} 
+          {confirm.data.finance_param?.gateway_fees +
+            ' ' +
+            confirm.data.finance_param.currency}
         </Text>
         {/* --------------------------------------------------------------- */}
         <Text style={s.first_text}>Примечание</Text>
-        <Text style={s.second_text}>
-          {confirm.data.finance_param?.memo}
-          </Text>
+        <Text style={s.second_text}>{confirm.data.finance_param?.memo}</Text>
       </View>
       {loading ? (
         load

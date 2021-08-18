@@ -184,10 +184,14 @@ const AddWalletSecond = props => {
               justifyContent: 'space-between',
               flexDirection: 'row',
             }}>
-            <TouchableOpacity onPress={() => back.goBack()}>
+            <TouchableOpacity
+              onPress={() => back.goBack()}
+              style={{width: 50, height: 50}}>
               <ArrowLeft />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <TouchableOpacity
+              onPress={() => setModalVisible(true)}
+              style={{width: 50, height: 50}}>
               <VerifyIcon />
             </TouchableOpacity>
           </View>

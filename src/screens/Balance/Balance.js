@@ -11,10 +11,9 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import {useIsFocused, useNavigation} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 import AllCryptoval from './AllCryptoval';
 import AllWallet from './AllWallet';
-import Params from './Params';
 import HorFlat from '../components/HorFlat';
 import Cryptoval from './Cryptoval';
 import Notification from './Noification';
@@ -61,31 +60,17 @@ const Balance = ({navigation}) => {
   const width = Dimensions.get('window').width;
   const [refreshing, setRefreshing] = useState(false);
   const dispatch = useDispatch();
-  const focused = useIsFocused();
 
   const {userData, token, allWallets, allRates} = useSelector(
     store => store.appReducer,
   );
   useEffect(() => {
     getBalance();
-  }, [focused]);
-  // ----------------------------------------------------------
-  useEffect(() => {
     getData();
     checkAndroidPermission();
-    return () => {
-      dispatch(getWallets(''));
-      dispatch(getAllWallets(''));
-      dispatch(SellRates(''));
-      dispatch(saveUserData(''));
-      dispatch(saveRates(''));
-      dispatch(saveAllRates(''));
-      dispatch(FiatKurs(''));
-      dispatch(setUserHistory(''));
-    };
-  }, []);
+  }, [getBalance, getData]);
   // ----------------------------------------------------------
-  const getBalance = async () => {
+  const getBalance = useCallback(async () => {
     const tokenLocal = await AsyncStorage.getItem('Token');
 
     if (Boolean(token) && tokenLocal) {
@@ -146,9 +131,9 @@ const Balance = ({navigation}) => {
         })
         .catch(e => console.log(e.message));
     }
-  };
+  }, [dispatch, token]);
   // ----------------------------------------------------------
-  const getData = async () => {
+  const getData = useCallback(async () => {
     setRefreshing(true);
 
     const tokenLocal = await AsyncStorage.getItem('Token');
@@ -163,7 +148,10 @@ const Balance = ({navigation}) => {
           },
         })
         .then(({data, ...res}) => {
-          // console.log(`actions ${JSON.stringify(res)}`);
+          if (data.result !== 1) {
+            AsyncStorage.removeItem('Token');
+            navigation.replace('Login');
+          }
           dispatch(saveUserData(data.data.user_data));
         })
         .catch(e => console.log(e.message));
@@ -199,9 +187,6 @@ const Balance = ({navigation}) => {
         })
         .catch(e => console.log(e.message));
     }
-
-    // -------------------------------------------
-    getBalance();
     // -------------------------------------------
 
     // fiat-valute-rates
@@ -221,7 +206,7 @@ const Balance = ({navigation}) => {
     }
     // -------------------------------------------
 
-    if (!Boolean(userData) && tokenLocal) {
+    if (!userData && tokenLocal) {
       appAxios
         .get('user/actions', {
           headers: {
@@ -236,10 +221,10 @@ const Balance = ({navigation}) => {
 
     dispatch(setLoading(false));
     setRefreshing(false);
-  };
+  }, [userData, allRates, token, dispatch, navigation]);
 
   // *************************Home Start*************************
-  function Home({navigation}) {
+  function Home() {
     const drawer = useNavigation();
 
     return (
@@ -247,7 +232,11 @@ const Balance = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={getData} />
+            <RefreshControl
+              tintColor="#fff"
+              refreshing={refreshing}
+              onRefresh={getData}
+            />
           }>
           <View
             style={{

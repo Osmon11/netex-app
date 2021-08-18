@@ -75,7 +75,9 @@ const Pay24 = ({navigation}) => {
             marginTop: 30,
             marginBottom: 52,
           }}>
-          <TouchableOpacity onPress={() => back.goBack()}>
+          <TouchableOpacity
+            onPress={() => back.goBack()}
+            style={{width: 50, height: 50}}>
             <ArrowLeft />
           </TouchableOpacity>
         </View>

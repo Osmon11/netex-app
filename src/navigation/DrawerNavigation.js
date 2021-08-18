@@ -71,6 +71,7 @@ const DrawerNavigation = nav => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
     const {userData, token} = useSelector(store => store.appReducer);
+
     useEffect(() => {
       setIsLoading(true);
       appAxios
@@ -92,7 +93,7 @@ const DrawerNavigation = nav => {
             : console.log(e),
         );
       setIsLoading(false);
-    }, []);
+    }, [dispatch, token]);
     const Exit = async () => {
       Alert.alert('Внимание!', 'Выйти из приложения?', [
         {

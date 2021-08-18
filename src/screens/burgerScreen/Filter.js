@@ -153,6 +153,8 @@ const Filter = ({navigation}) => {
               marginTop: 30,
               marginBottom: 23,
               marginLeft: 28,
+              width: 50,
+              height: 50,
             }}
             onPress={() => navigation.goBack()}>
             <ArrowLeft />

@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Balance from '../screens/Balance/Balance';
 import Replenish from '../screens/Replenish/Replenish';
@@ -7,6 +6,7 @@ import Buy from '../screens/Buy/Buy';
 import Profile from '../screens/Profile/Profile';
 const BottomTab = createBottomTabNavigator();
 import {BalanceIcon, BuyIcon, ProfileIcon, ReplenishIcon} from '../screens/Svg';
+
 const BottomBarNavigation = () => (
   <BottomTab.Navigator
     initialRouteName="Balance"
@@ -20,7 +20,7 @@ const BottomBarNavigation = () => (
       style: {
         height: 80,
         backgroundColor: '#2E313F',
-        paddingBottom: 10,
+        paddingBottom: 5,
         paddingTop: 10,
         borderTopColor: 'rgba(0,0,0,0.3)',
       },

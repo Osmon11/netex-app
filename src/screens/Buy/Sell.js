@@ -185,7 +185,7 @@ const Sell = ({navigation}) => {
             // justifyContent: 'space-between',
           }}>
           <TouchableOpacity
-            style={{alignSelf: 'center'}}
+            style={{alignSelf: 'center', width: 50, height: 50}}
             onPress={() => back.goBack()}>
             <ArrowLeft />
           </TouchableOpacity>

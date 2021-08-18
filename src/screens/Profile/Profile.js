@@ -34,7 +34,7 @@ const Profile = nav => {
   const drawer = useNavigation();
   // -------------------------------------------------------------------
   function Home({navigation}) {
-    return Boolean(!UserHistory) ? (
+    return !UserHistory ? (
       loader
     ) : (
       <SafeAreaView

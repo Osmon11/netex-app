@@ -188,10 +188,9 @@ const WithDraw3 = ({navigation}) => {
             marginBottom: 37,
             display: 'flex',
             flexDirection: 'row',
-            // justifyContent: 'space-between',
           }}>
           <TouchableOpacity
-            style={{alignSelf: 'center'}}
+            style={{alignSelf: 'center', width: 50, height: 50}}
             onPress={() => back.goBack()}>
             <ArrowLeft />
           </TouchableOpacity>
@@ -232,7 +231,6 @@ const WithDraw3 = ({navigation}) => {
                 marginTop: 23,
                 paddingVertical: 30,
                 borderRadius: 20,
-                borderRadius: 10,
                 backgroundColor: 'rgba(0,0,0,0.9)',
                 borderColor: 'rgba(196, 196, 196, 0.36)',
               }}>
