@@ -8,10 +8,8 @@ import {
   ScrollView,
 } from 'react-native';
 import Accordion from 'react-native-collapsible/Accordion';
-import {Tabs} from 'react-native-collapsible-tab-view';
 import {DownArrow2, UppArrow} from '../Svg';
 import * as Animatable from 'react-native-animatable';
-import config from '../../api/config';
 import {useDispatch, useSelector} from 'react-redux';
 import {appAxios} from '../../api/axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -20,26 +18,29 @@ const HEADER_HEIGHT = 250;
 
 const AccordionView = () => {
   const dispatch = useDispatch();
-  const [questionsApi, setQuestionsApi] = useState('');
+  const [questionsApi] = useState('');
   const [active, setActive] = useState('Общие вопросы');
   const {questions} = useSelector(store => store.appReducer);
 
-  useEffect(async () => {
-    const tokenLocal = await AsyncStorage.getItem('Token');
+  useEffect(() => {
+    async function getData() {
+      const tokenLocal = await AsyncStorage.getItem('Token');
 
-    if (!Boolean(questions)) {
-      appAxios
-        .get('faq', {
-          headers: {
-            authorization: `Basic ${tokenLocal || token}`,
-          },
-        })
-        .then(({data, ...res}) => {
-          // console.log(`FAQ** ${JSON.stringify(data.data)}`);
-          dispatch(getFAQ(data.data));
-        })
-        .catch(e => console.log(e));
+      if (!questions) {
+        appAxios
+          .get('faq', {
+            headers: {
+              authorization: `Basic ${tokenLocal}`,
+            },
+          })
+          .then(({data, ...res}) => {
+            // console.log(`FAQ** ${JSON.stringify(data.data)}`);
+            dispatch(getFAQ(data.data));
+          })
+          .catch(e => console.log(e));
+      }
     }
+    getData();
   });
 
   const _renderSectionTitle = section => {
@@ -94,11 +95,6 @@ const AccordionView = () => {
     );
   };
 
-  _updateSections = activeSections => {
-    // console.log(activeSections);
-    setQuestionsApi(activeSections);
-  };
-
   return questions ? (
     <View style={{paddingBottom: 30}}>
       {/* {/ <Text style={{color: 'white'}}>{faqData.map(item => item.name)}</Text> /} */}
@@ -118,7 +114,7 @@ const AccordionView = () => {
                   color: active === tab ? 'white' : 'rgba(255,255,255,0.5)',
                   fontWeight: active === tab ? '700' : 'normal',
                   textTransform: active === tab ? 'uppercase' : 'lowercase',
-                  fontSize: 18,
+                  fontSize: 15,
                   marginRight: 10,
                 }}>
                 {tab}

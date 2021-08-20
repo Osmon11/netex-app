@@ -99,7 +99,7 @@ const AddWalletSecond = props => {
       style={{
         backgroundColor: 'rgba(0,0,0,0.9)',
         marginHorizontal: 34,
-        marginTop: 300,
+        marginTop: 200,
         borderRadius: 10,
       }}>
       <View style={{}}>
@@ -189,9 +189,7 @@ const AddWalletSecond = props => {
               style={{width: 50, height: 50}}>
               <ArrowLeft />
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => setModalVisible(true)}
-              style={{width: 50, height: 50}}>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
               <VerifyIcon />
             </TouchableOpacity>
           </View>
