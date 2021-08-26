@@ -41,17 +41,15 @@ const History = ({navigation}) => {
   const [refreshing, setRefreshing] = useState(false);
 
   const [dataa, setDataa] = useState([]);
-  const [isLoading, setisLoading] = useState(false);
+  const [maxPage, setMaxPage] = useState(0);
   const [pageCurrent, setpageCurrent] = useState(1);
   const {token} = useSelector(store => store.appReducer);
 
   useEffect(() => {
-    setisLoading(true);
     getData();
-    return () => {};
-  }, [pageCurrent]);
+  }, [pageCurrent, getData]);
 
-  const getData = async () => {
+  const getData = React.useCallback(async () => {
     setRefreshing(true);
 
     const tokenLocal = await AsyncStorage.getItem('Token');
@@ -67,6 +65,7 @@ const History = ({navigation}) => {
       )
       .then(({data, ...res}) => {
         if (data.result === 1) {
+          setMaxPage(Math.round(data.data.all_user_operations / 10));
           setDataa(dataa.concat(data.data.operations));
           dispatch(getOperations(data.data.operations));
           dispatch(getOperationsFiltered(data.data.operations));
@@ -76,10 +75,9 @@ const History = ({navigation}) => {
           dispatch(getOperationsFiltered());
         }
         setRefreshing(false);
-        setisLoading(false);
       })
       .catch(e => console.log(e));
-  };
+  }, [dataa, dispatch, pageCurrent, token]);
 
   // -----------------Start render-----------------
   const renderItem = dataa.map((item, key) => {
@@ -172,8 +170,9 @@ const History = ({navigation}) => {
   // -----------------End render-----------------
 
   const handleLoadMore = () => {
-    setpageCurrent(pageCurrent + 1);
-    setisLoading(true);
+    if (pageCurrent < maxPage) {
+      setpageCurrent(pageCurrent + 1);
+    }
   };
 
   return (
@@ -207,7 +206,7 @@ const History = ({navigation}) => {
             </TouchableOpacity>
           </View>
           <Text style={{color: 'white', fontWeight: '600'}}>
-            ИСТОРИЯ ОПЕРАЦИИ
+            ИСТОРИЯ ОПЕРАЦИЙ
           </Text>
           {dataa.length !== 0 ? renderItem : noData}
         </View>
